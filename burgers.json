@@ -1,0 +1,59 @@
+[
+{
+    "type": "header",
+    "version": "4.8.3",
+    "comment": "Export to JSON plugin for PHPMyAdmin"
+},
+{
+    "type": "database",
+    "name": "burgers"
+},
+{
+    "type": "table",
+    "name": "customers",
+    "database": "burgers",
+    "data": 
+[
+{
+    "customerID": "1",
+    "email": "irenegur78@gmail.com",
+    "customerName": "Irene",
+    "phone": "2147483647"
+},
+{
+    "customerID": "2",
+    "email": "irene-gur@rambler.ru",
+    "customerName": "Александр",
+    "phone": "6548921"
+}
+]
+
+}
+,{
+    "type": "table",
+    "name": "orders",
+    "database": "burgers",
+    "data": 
+[
+{
+    "orderID": "1",
+    "customerID": "1",
+    "address": "ул.Ленина, д.8",
+    "note": "Просьба доставить заказ к главному входу 30 ноября в 17:00"
+},
+{
+    "orderID": "2",
+    "customerID": "1",
+    "address": "пр.Победы, д.131, кв.58",
+    "note": "Просьба доставить заказ 3 декабря в 11:00"
+},
+{
+    "orderID": "3",
+    "customerID": "2",
+    "address": "ул.Ломоносова, д.74, кв.3",
+    "note": "Просьба доставить заказ 15 декабря в 13:00"
+}
+]
+
+}
+]
