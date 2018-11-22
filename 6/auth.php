@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Главная страница
     </title>
-    <link rel="stylesheet" href="./css/vendors.min.css">
+    <link rel="stylesheet" href="../css/vendors.min.css">
     <link rel="stylesheet" href="../css/main.min.css">
 </head>
 <body>
@@ -26,7 +26,6 @@ if (!isset($customerID)) {
     $prepare->execute(['email' => $_POST['email'], 'customerName' => $_POST['customerName'], 'phone' => $_POST['phone']]);
     $customerID = $pdo->lastInsertId();
 }
-
 if (isset($customerID)) {
     echo '<h1 align="center">Приветствуем Вас, ' . $_POST['customerName']. '!</h1>';
     ?>
