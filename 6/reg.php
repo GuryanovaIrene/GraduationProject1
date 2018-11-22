@@ -12,7 +12,7 @@
 <body>
 
 <h1 align="center">Регистрация</h1>
-<form method="POST" action="auth.php">
+<form method="POST" action="order.php">
     <table align="center">
         <tr>
             <td>Введите e-mail</td>
