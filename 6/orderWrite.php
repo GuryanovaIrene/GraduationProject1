@@ -17,11 +17,12 @@ $prepare = $pdo->prepare('insert into orders(customerID, address, note)
                                     values (:customerID, :address, :note)');
 $prepare->execute(['customerID' => $_POST['customerID'], 'address' => $_POST['address'], 'note' => $_POST['note']]);
 $orderID = $pdo->lastInsertId();
-$prepare = $pdo->prepare('select email from customers where customerID = :customerID');
+$prepare = $pdo->prepare('select email, customerName from customers where customerID = :customerID');
 $prepare->execute(['customerID' => $_POST['customerID']]);
 $data = $prepare->fetchAll(PDO::FETCH_ASSOC);
 foreach ($data as $value) {
     $email = $value['email'];
+    $customerName = $value['customerName'];
 }
 $prepare = $pdo->prepare('select count(1) ordersCount from orders where customerID = :customerID');
 $prepare->execute(['customerID' => $_POST['customerID']]);
@@ -37,11 +38,6 @@ if ($ordersCount == 1) {
 } else {
     $strFoot = 'Спасибо! Это уже ' . $ordersCount . ' заказ';
 }
-if (isset($email)) {
-    mail($email,'Ваш заказ принят', $strHead . $strAddress . $strContent . $strFoot);
-} else {
-    echo 'Не введен e-mail!';
-}
 
 $dt = date('Y-m-d H_i');
 //  Создание директории
@@ -49,6 +45,8 @@ mkdir("ordTxt/" . $dt);
 //  Запись в файл
 file_put_contents("ordTxt/" . $dt . "/" . $orderID . ".txt",
     $strHead . "\r\n" . $strAddress . "\r\n" . $strContent . "\r\n \r\n" . $strFoot);
+
+require "sendLetter.php";
 
 echo $strHead . '<br/>' . $strAddress . '<br/>' . $strContent . '<br/><br/>' . $strFoot . '<br/>';
 echo '<a href="../index.html"> << Вернуться на главную страницу</a>';
