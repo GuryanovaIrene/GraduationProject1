@@ -2,13 +2,13 @@
     require_once '../vendor/autoload.php';
 
     $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465))
-        ->setUsername('GuryanovaIrene@gmail.com')
-        ->setPassword('lompr317krasn539');
+        ->setUsername('guryanovairene@gmail.com')
+        ->setPassword('loftschool');
 
     $mailer = new Swift_Mailer($transport);
 
     $message = (new Swift_Message('Ваш заказ принят'))
-        ->setFrom(['GuryanovaIrene@gmail.com' => 'Гурьянова Ирина'])
+        ->setFrom(['guryanovairene@gmail.com' => 'Гурьянова Ирина'])
         ->setTo([$email => $customerName])
         ->setBody($strHead . $strAddress . $strContent . $strFoot);
     $result = $mailer->send($message);
