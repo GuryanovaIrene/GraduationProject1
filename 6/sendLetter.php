@@ -1,9 +1,9 @@
 <?php
     require_once '../vendor/autoload.php';
 
-    $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465))
-        ->setUsername('guryanovairene@gmail.com')
-        ->setPassword('loftschool');
+    $transport = (new Swift_SmtpTransport('smtp.mailtrap.io', 2525))
+        ->setUsername('c09bacb3443038')
+        ->setPassword('ceeaa92ccb76e5');
 
     $mailer = new Swift_Mailer($transport);
 
